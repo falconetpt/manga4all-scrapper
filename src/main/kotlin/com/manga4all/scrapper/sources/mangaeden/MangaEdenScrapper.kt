@@ -17,7 +17,7 @@ object MangaEdenScrapper : MangaSourceOperation {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun extractImagesUrl(chapter: MangaChapter): List<String> {
+    override fun extractImagesUrl(title: String, chapter: MangaChapter): List<String> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
