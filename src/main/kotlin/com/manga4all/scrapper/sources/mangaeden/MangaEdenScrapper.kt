@@ -5,6 +5,10 @@ import com.manga4all.scrapper.manga.MangaInfo
 import com.manga4all.scrapper.sources.MangaSourceOperation
 
 object MangaEdenScrapper : MangaSourceOperation {
+    override fun searchPopular(page: Int): List<MangaInfo> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun getFavorites(page: Int): List<MangaInfo> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

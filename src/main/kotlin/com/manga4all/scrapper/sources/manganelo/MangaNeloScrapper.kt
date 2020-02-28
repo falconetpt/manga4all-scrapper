@@ -10,6 +10,14 @@ import org.jsoup.nodes.Element
 object MangaNeloScrapper : MangaSourceOperation {
     private val baseUrl = "https://manganelo.com"
 
+    override fun searchPopular(page: Int): List<MangaInfo> {
+        val docs = HttpConnector.obtainDocument("$baseUrl/genre-all/$page?type=topview")
+
+        return docs.getElementsByClass("panel-content-genres")
+                .map { extractMangaInfo(it, "genres-item-img") }
+    }
+
+
     override fun getFavorites(page: Int): List<MangaInfo> {
         TODO("not implemented")
     }
@@ -18,7 +26,7 @@ object MangaNeloScrapper : MangaSourceOperation {
         val docs = HttpConnector.obtainDocument("$baseUrl/search/$query?page=$page")
 
         return docs.getElementsByClass("search-story-item")
-                .map(this::extractMangaInfo)
+                .map { extractMangaInfo(it, "item-img") }
     }
 
     override fun extractChapterList(manga: MangaInfo): List<MangaChapter> {
@@ -31,15 +39,17 @@ object MangaNeloScrapper : MangaSourceOperation {
     override fun extractImagesUrl(title: String, chapter: MangaChapter): List<String> {
         val docs: Document = HttpConnector.obtainDocument("$baseUrl/$title/${chapter.number}")
 
-        val images: List<String> = docs.getElementsByTag("img")
+        val images: List<String> = docs.getElementsByClass("container-chapter-reader")
+                .first()
+                .getElementsByTag("img")
                 .map { img -> img.attr("src") }
                 .filter { url -> url.contains("[0-9]".toRegex()) }
 
         return images
     }
 
-    private fun extractMangaInfo(it: Element?): MangaInfo {
-        val baseElement = it?.getElementsByClass("item-img")
+    private fun extractMangaInfo(it: Element?, baseClassName: String): MangaInfo {
+        val baseElement = it?.getElementsByClass(baseClassName)
                 ?.first()
 
         val elementUrl = baseElement?.attr("href") ?: ""
