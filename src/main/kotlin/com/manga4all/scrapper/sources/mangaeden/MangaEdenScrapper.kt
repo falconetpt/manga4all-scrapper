@@ -9,6 +9,10 @@ object MangaEdenScrapper : MangaSourceOperation {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun getLatest(page: Int): List<MangaInfo> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun getFavorites(page: Int): List<MangaInfo> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -17,11 +21,11 @@ object MangaEdenScrapper : MangaSourceOperation {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun extractChapterList(manga: MangaInfo): List<MangaChapter> {
+    override fun extractChapterList(mangaId: String): List<MangaChapter> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun extractImagesUrl(title: String, chapter: MangaChapter): List<String> {
+    override fun extractImagesUrl(mangaId: String, chapter: String): List<String> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

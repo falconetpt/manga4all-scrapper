@@ -6,8 +6,9 @@ import com.manga4all.scrapper.manga.MangaInfo
 
 interface MangaSourceOperation {
     fun getFavorites(page: Int = 1): List<MangaInfo>
+    fun getLatest(page: Int = 1): List<MangaInfo>
     fun searchPopular(page: Int = 1): List<MangaInfo>
     fun searchMangaRequest(query: String, page: Int = 1): List<MangaInfo>
-    fun extractChapterList(manga: MangaInfo): List<MangaChapter>
-    fun extractImagesUrl(title: String, chapter: MangaChapter): List<String>
+    fun extractChapterList(mangaId: String): List<MangaChapter>
+    fun extractImagesUrl(mangaId: String, chapter: String): List<String>
 }
