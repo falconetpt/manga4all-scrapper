@@ -41,6 +41,26 @@ internal class MangaNeloScrapperTest {
 
     @Test
     fun getLatest() {
+        val html = readHtmlFile("src/test/resources/manga.sources.manganelo/latest.html")
+        val httpConnector = MockHttpConnector(html)
+        val result = MangaNeloScrapper(httpConnector).getLatest(1)
+
+        val expected = listOf(
+                MangaInfo(
+                        id = "gd919622",
+                        name = "Battle Through The Heavens: Return Of The Beasts",
+                        imageUrl = "https://avt.mkklcdnv6.com/38/u/18-1583498599.jpg",
+                        mangaUrl = "https://manganelo.com/manga/gd919622"
+                ),
+                MangaInfo(
+                        id = "jichou_shinai_motoyuusha_no_tsuyokute_tanoshii_new_game",
+                        name = "Jichou shinai Motoyuusha no Tsuyokute Tanoshii New Game",
+                        imageUrl = "https://avt.mkklcdnv6.com/37/e/16-1583494801.jpg",
+                        mangaUrl = "https://manganelo.com/manga/jichou_shinai_motoyuusha_no_tsuyokute_tanoshii_new_game"
+                )
+        )
+
+        assertEquals(expected, result)
     }
 
     @Test
