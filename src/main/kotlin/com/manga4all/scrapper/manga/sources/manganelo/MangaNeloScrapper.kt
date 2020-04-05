@@ -1,8 +1,8 @@
-package com.manga4all.scrapper.sources.manganelo
+package com.manga4all.scrapper.manga.sources.manganelo
 
 import com.manga4all.scrapper.manga.MangaChapter
 import com.manga4all.scrapper.manga.MangaInfo
-import com.manga4all.scrapper.sources.MangaSourceOperation
+import com.manga4all.scrapper.manga.sources.MangaSourceOperation
 import com.manga4all.scrapper.utils.HttpConnector
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -32,7 +32,7 @@ class MangaNeloScrapper(val httpConnector: HttpConnector<Document>) : MangaSourc
     }
 
     override fun getFavorites(page: Int): List<MangaInfo> {
-        TODO("not implemented")
+        return listOf()
     }
 
     override fun searchMangaRequest(query: String, page: Int): List<MangaInfo> {

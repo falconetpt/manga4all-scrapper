@@ -1,4 +1,4 @@
-package com.manga4all.scrapper.sources
+package com.manga4all.scrapper.manga.sources
 
 import com.manga4all.scrapper.manga.MangaChapter
 import com.manga4all.scrapper.manga.MangaInfo

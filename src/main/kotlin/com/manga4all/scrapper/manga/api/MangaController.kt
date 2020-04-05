@@ -1,8 +1,8 @@
-package com.manga4all.scrapper.api
+package com.manga4all.scrapper.manga.api
 
 import com.manga4all.scrapper.manga.MangaChapter
 import com.manga4all.scrapper.manga.MangaInfo
-import com.manga4all.scrapper.sources.MangaSourceExtractor
+import com.manga4all.scrapper.manga.sources.MangaSourceExtractor
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
