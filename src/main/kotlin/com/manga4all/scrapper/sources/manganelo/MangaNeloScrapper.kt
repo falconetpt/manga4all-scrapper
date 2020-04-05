@@ -7,12 +7,12 @@ import com.manga4all.scrapper.utils.HttpConnector
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 
-object MangaNeloScrapper : MangaSourceOperation {
+class MangaNeloScrapper(val httpConnector: HttpConnector<Document>) : MangaSourceOperation {
 
     private val baseUrl = "https://manganelo.com"
 
     override fun searchPopular(page: Int): List<MangaInfo> {
-        val docs = HttpConnector.obtainDocument("$baseUrl/genre-all/$page?type=topview")
+        val docs = httpConnector.obtainDocument("$baseUrl/genre-all/$page?type=topview")
 
         return docs.getElementsByClass("panel-content-genres")
                 .map { it.getElementsByClass("genres-item-img") }
@@ -22,7 +22,7 @@ object MangaNeloScrapper : MangaSourceOperation {
     }
 
     override fun getLatest(page: Int): List<MangaInfo> {
-        val docs = HttpConnector.obtainDocument("$baseUrl/genre-all/$page")
+        val docs = httpConnector.obtainDocument("$baseUrl/genre-all/$page")
 
         return docs.getElementsByClass("panel-content-genres")
                 .map { it.getElementsByClass("content-genres-item") }
@@ -36,7 +36,7 @@ object MangaNeloScrapper : MangaSourceOperation {
     }
 
     override fun searchMangaRequest(query: String, page: Int): List<MangaInfo> {
-        val docs = HttpConnector.obtainDocument("$baseUrl/search/$query?page=$page")
+        val docs = httpConnector.obtainDocument("$baseUrl/search/$query?page=$page")
 
         return docs.getElementsByClass("search-story-item")
                 .map { it.getElementsByClass("item-img") }
@@ -45,14 +45,14 @@ object MangaNeloScrapper : MangaSourceOperation {
     }
 
     override fun extractChapterList(mangaId: String): List<MangaChapter> {
-        val docs = HttpConnector.obtainDocument("$baseUrl/manga/$mangaId")
+        val docs = httpConnector.obtainDocument("$baseUrl/manga/$mangaId")
         return docs.getElementsByClass("row-content-chapter").first()
                 ?.getElementsByTag("a")
                 ?.map(::extractChapterInfo) ?: listOf()
     }
 
     override fun extractImagesUrl(mangaId: String, chapter: String): List<String> {
-        val docs: Document = HttpConnector.obtainDocument("$baseUrl/chapter/$mangaId/chapter_${chapter}")
+        val docs: Document = httpConnector.obtainDocument("$baseUrl/chapter/$mangaId/chapter_${chapter}")
 
         val images: List<String> = docs.getElementsByClass("container-chapter-reader")
                 .first()
