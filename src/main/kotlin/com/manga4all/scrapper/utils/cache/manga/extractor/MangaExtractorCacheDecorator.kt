@@ -11,6 +11,12 @@ class MangaExtractorCacheDecorator(val mangaSourceOperation: MangaSourceOperatio
             expirationTimeAfterAccessSeconds = 6000
     )
 
+    private val mangaChapterCache = MangaChapterCache(
+            maxSize = 10,
+            mangaSourceOperation = mangaSourceOperation,
+            expirationTimeAfterAccessSeconds = 6000
+    )
+
     override fun getFavorites(page: Int): List<MangaInfo> {
         return mangaSourceOperation.getFavorites(page)
     }
@@ -28,7 +34,7 @@ class MangaExtractorCacheDecorator(val mangaSourceOperation: MangaSourceOperatio
     }
 
     override fun extractChapterList(mangaId: String): List<MangaChapter> {
-        return mangaSourceOperation.extractChapterList(mangaId)
+        return mangaChapterCache.extractItem(mangaId)
     }
 
     override fun extractImagesUrl(mangaChapter: MangaChapter): List<String> {
