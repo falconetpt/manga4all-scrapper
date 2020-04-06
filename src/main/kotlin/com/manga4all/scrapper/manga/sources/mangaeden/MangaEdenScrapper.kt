@@ -5,7 +5,7 @@ import com.manga4all.scrapper.manga.MangaInfo
 import com.manga4all.scrapper.manga.sources.MangaSourceOperation
 
 object MangaEdenScrapper : MangaSourceOperation {
-    override fun searchPopular(page: Int): List<MangaInfo> {
+    override fun getFavorites(page: Int): List<MangaInfo> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -13,7 +13,7 @@ object MangaEdenScrapper : MangaSourceOperation {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getFavorites(page: Int): List<MangaInfo> {
+    override fun searchPopular(page: Int): List<MangaInfo> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -25,7 +25,7 @@ object MangaEdenScrapper : MangaSourceOperation {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun extractImagesUrl(mangaId: String, chapter: String): List<String> {
+    override fun extractImagesUrl(mangaChapter: MangaChapter): List<String> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

@@ -3,7 +3,7 @@ package com.manga4all.scrapper.manga.sources.manganelo
 import com.manga4all.scrapper.manga.MangaChapter
 import com.manga4all.scrapper.manga.MangaInfo
 import com.manga4all.scrapper.manga.sources.MangaSourceOperation
-import com.manga4all.scrapper.utils.HttpConnector
+import com.manga4all.scrapper.utils.http.connector.HttpConnector
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 
@@ -51,8 +51,8 @@ class MangaNeloScrapper(val httpConnector: HttpConnector<Document>) : MangaSourc
                 ?.map(::extractChapterInfo) ?: listOf()
     }
 
-    override fun extractImagesUrl(mangaId: String, chapter: String): List<String> {
-        val docs: Document = httpConnector.obtainDocument("$baseUrl/chapter/$mangaId/chapter_${chapter}")
+    override fun extractImagesUrl(mangaChapter: MangaChapter): List<String> {
+        val docs: Document = httpConnector.obtainDocument(mangaChapter.url)
 
         val images: List<String> = docs.getElementsByClass("container-chapter-reader")
                 .first()

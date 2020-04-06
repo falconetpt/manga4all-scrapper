@@ -1,4 +1,4 @@
-package com.manga4all.scrapper.utils
+package com.manga4all.scrapper.utils.http.connector
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document

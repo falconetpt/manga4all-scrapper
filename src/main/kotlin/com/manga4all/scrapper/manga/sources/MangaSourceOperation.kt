@@ -10,5 +10,5 @@ interface MangaSourceOperation {
     fun searchPopular(page: Int = 1): List<MangaInfo>
     fun searchMangaRequest(query: String, page: Int = 1): List<MangaInfo>
     fun extractChapterList(mangaId: String): List<MangaChapter>
-    fun extractImagesUrl(mangaId: String, chapter: String): List<String>
+    fun extractImagesUrl(mangaChapter: MangaChapter): List<String>
 }

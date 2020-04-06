@@ -2,7 +2,7 @@ package com.manga4all.scrapper.manga.sources.manganelo
 
 import com.manga4all.scrapper.manga.MangaChapter
 import com.manga4all.scrapper.manga.MangaInfo
-import com.manga4all.scrapper.utils.MockHttpConnector
+import com.manga4all.scrapper.utils.http.connector.MockHttpConnector
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.io.File
@@ -176,7 +176,13 @@ internal class MangaNeloScrapperTest {
         val html = readHtmlFile("src/test/resources/manga.sources.manganelo/chapterImages.html")
         val httpConnector = MockHttpConnector(html)
         val result = MangaNeloScrapper(httpConnector)
-                .extractImagesUrl(mangaId = "kimetsu_no_yaiba", chapter = "1")
+                .extractImagesUrl(
+                        MangaChapter(
+                                name = "kimetsu_no_yaiba",
+                                number = "1",
+                                url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_1"
+                        )
+                )
 
         val expected = (1..55)
                 .map { "https://s6.mkklcdnv6.com/mangakakalot/k1/kimetsu_no_yaiba/chapter_1_cruelty/$it.jpg" }
