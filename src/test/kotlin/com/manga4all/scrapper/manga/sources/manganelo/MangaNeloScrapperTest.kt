@@ -1,5 +1,6 @@
 package com.manga4all.scrapper.manga.sources.manganelo
 
+import com.manga4all.scrapper.SearchMangaRequest
 import com.manga4all.scrapper.manga.MangaChapter
 import com.manga4all.scrapper.manga.MangaInfo
 import com.manga4all.scrapper.utils.http.connector.MockHttpConnector
@@ -72,7 +73,8 @@ internal class MangaNeloScrapperTest {
     fun searchMangaRequest() {
         val html = readHtmlFile("src/test/resources/manga.sources.manganelo/search.html")
         val httpConnector = MockHttpConnector(html)
-        val result = MangaNeloScrapper(httpConnector).searchMangaRequest(query = "kimetsu", page = 1)
+        val query = SearchMangaRequest(query = "kimetsu", page = 1)
+        val result = MangaNeloScrapper(httpConnector).searchMangaRequest(query)
 
         val expected = listOf(
                 MangaInfo(

@@ -1,5 +1,6 @@
 package com.manga4all.scrapper.manga.api
 
+import com.manga4all.scrapper.SearchMangaRequest
 import com.manga4all.scrapper.manga.MangaChapter
 import com.manga4all.scrapper.manga.MangaInfo
 import com.manga4all.scrapper.manga.sources.MangaSourceExtractor
@@ -12,7 +13,7 @@ class MangaController {
     @GetMapping("/search/{name}/{page}")
     fun search(@PathVariable("name") name: String,
                @PathVariable("page") page: Int): ResponseEntity<List<MangaInfo>> {
-        return ResponseEntity.ok(MangaSourceExtractor.getRandomSource().searchMangaRequest(name, page))
+        return ResponseEntity.ok(MangaSourceExtractor.getRandomSource().searchMangaRequest(SearchMangaRequest(name, page)))
     }
 
     @GetMapping("/popular/{page}")

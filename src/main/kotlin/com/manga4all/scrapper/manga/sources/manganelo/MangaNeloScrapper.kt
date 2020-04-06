@@ -1,5 +1,6 @@
 package com.manga4all.scrapper.manga.sources.manganelo
 
+import com.manga4all.scrapper.SearchMangaRequest
 import com.manga4all.scrapper.manga.MangaChapter
 import com.manga4all.scrapper.manga.MangaInfo
 import com.manga4all.scrapper.manga.sources.MangaSourceOperation
@@ -35,7 +36,9 @@ class MangaNeloScrapper(val httpConnector: HttpConnector<Document>) : MangaSourc
         return listOf()
     }
 
-    override fun searchMangaRequest(query: String, page: Int): List<MangaInfo> {
+    override fun searchMangaRequest(searchMangaRequest: SearchMangaRequest): List<MangaInfo> {
+        val query = searchMangaRequest.query
+        val page = searchMangaRequest.page
         val docs = httpConnector.obtainDocument("$baseUrl/search/$query?page=$page")
 
         return docs.getElementsByClass("search-story-item")

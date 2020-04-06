@@ -5,9 +5,9 @@ import com.google.common.cache.CacheLoader
 import com.google.common.cache.LoadingCache
 import java.util.concurrent.TimeUnit
 
-class BaseCache<I, O>(maxSize: Long,
-                      expirationTimeAfterAccessSeconds: Long,
-                      cacheLoader: CacheLoader<I, O>) {
+class GuavaBaseCache<I, O>(maxSize: Long,
+                           expirationTimeAfterAccessSeconds: Long,
+                           cacheLoader: CacheLoader<I, O>) {
     private val cache = CacheBuilder.newBuilder()
             .maximumSize(maxSize)
             .expireAfterAccess(expirationTimeAfterAccessSeconds, TimeUnit.SECONDS)
