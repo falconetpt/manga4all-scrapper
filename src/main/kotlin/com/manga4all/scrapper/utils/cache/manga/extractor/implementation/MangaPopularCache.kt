@@ -12,7 +12,7 @@ class MangaPopularCache(val maxSize: Long,
 
     private val cacheLoader = object : CacheLoader<Int, List<MangaInfo>>() {
         override fun load(id: Int): List<MangaInfo> {
-            return mangaSourceOperation.getLatest(id)
+            return mangaSourceOperation.searchPopular(id)
         }
     }
 
