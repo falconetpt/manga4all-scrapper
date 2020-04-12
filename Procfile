@@ -1,1 +1,1 @@
-web: java -jar build/libs/kotlin-getting-started-1.0.jar
+web: java -jar target/scrapper-0.0.1-SNAPSHOT.jar
