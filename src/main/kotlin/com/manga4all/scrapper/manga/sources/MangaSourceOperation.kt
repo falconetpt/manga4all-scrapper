@@ -10,6 +10,6 @@ interface MangaSourceOperation {
     fun getLatest(page: Int = 1): List<MangaInfo>
     fun searchPopular(page: Int = 1): List<MangaInfo>
     fun searchMangaRequest(searchMangaRequest: SearchMangaRequest): List<MangaInfo>
-    fun extractChapterList(mangaId: String): List<MangaChapter>
+    fun extractChapterList(mangaInfo: MangaInfo): List<MangaChapter>
     fun extractImagesUrl(mangaChapter: MangaChapter): List<String>
 }

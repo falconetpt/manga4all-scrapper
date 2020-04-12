@@ -27,12 +27,12 @@ class MangaController {
         return ResponseEntity.ok(MangaSourceExtractor.getRandomSource().getLatest(page))
     }
 
-    @GetMapping("/chapters/{mangaId}")
-    fun getMangaChapters(@PathVariable("mangaId") mangaId: String): ResponseEntity<List<MangaChapter>> {
-        return ResponseEntity.ok(MangaSourceExtractor.getRandomSource().extractChapterList(mangaId))
+    @PostMapping("/chapters")
+    fun getMangaChapters(@RequestBody(required = true) mangaInfo: MangaInfo): ResponseEntity<List<MangaChapter>> {
+        return ResponseEntity.ok(MangaSourceExtractor.getRandomSource().extractChapterList(mangaInfo))
     }
 
-    @GetMapping("/extract")
+    @PostMapping("/extract")
     fun extractChapterInfo(@RequestBody(required = true) mangaChapter: MangaChapter): ResponseEntity<List<String>> {
         return ResponseEntity.ok(MangaSourceExtractor.getRandomSource().extractImagesUrl(mangaChapter))
     }

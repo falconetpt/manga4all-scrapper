@@ -110,7 +110,13 @@ internal class MangaNeloScrapperTest {
     fun extractChapterList() {
         val html = readHtmlFile("src/test/resources/manga.sources.manganelo/chapters.html")
         val httpConnector = MockHttpConnector(html)
-        val result = MangaNeloScrapper(httpConnector).extractChapterList(mangaId = "kimetsu_no_yaiba")
+        val mangaInfo = MangaInfo(
+                id = "kimetsu_no_yaiba",
+                name = "Kimetsu no yaiba",
+                imageUrl = "",
+                mangaUrl = ""
+        )
+        val result = MangaNeloScrapper(httpConnector).extractChapterList(mangaInfo)
 
         val expected = listOf(
                 MangaChapter(

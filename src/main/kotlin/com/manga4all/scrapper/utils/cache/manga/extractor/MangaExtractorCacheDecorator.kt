@@ -55,8 +55,8 @@ class MangaExtractorCacheDecorator(private val mangaSourceOperation: MangaSource
         return mangaSearchCache.extractItem(searchMangaRequest)
     }
 
-    override fun extractChapterList(mangaId: String): List<MangaChapter> {
-        return mangaChapterCache.extractItem(mangaId)
+    override fun extractChapterList(mangaInfo: MangaInfo): List<MangaChapter> {
+        return mangaChapterCache.extractItem(mangaInfo)
     }
 
     override fun extractImagesUrl(mangaChapter: MangaChapter): List<String> {

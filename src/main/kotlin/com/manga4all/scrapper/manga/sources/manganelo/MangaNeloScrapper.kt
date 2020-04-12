@@ -47,7 +47,8 @@ class MangaNeloScrapper(val httpConnector: HttpConnector<Document>) : MangaSourc
                 .map(::extractMangaInfo)
     }
 
-    override fun extractChapterList(mangaId: String): List<MangaChapter> {
+    override fun extractChapterList(mangaInfo: MangaInfo): List<MangaChapter> {
+        val mangaId = mangaInfo.id
         val docs = httpConnector.obtainDocument("$baseUrl/manga/$mangaId")
         return docs.getElementsByClass("row-content-chapter").first()
                 ?.getElementsByTag("a")
