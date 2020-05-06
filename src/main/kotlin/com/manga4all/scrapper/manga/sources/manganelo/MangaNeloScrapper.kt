@@ -3,12 +3,12 @@ package com.manga4all.scrapper.manga.sources.manganelo
 import com.manga4all.scrapper.SearchMangaRequest
 import com.manga4all.scrapper.manga.MangaChapter
 import com.manga4all.scrapper.manga.MangaInfo
-import com.manga4all.scrapper.manga.sources.MangaSourceOperation
+import com.manga4all.scrapper.manga.sources.MangaSource
 import com.manga4all.scrapper.utils.http.connector.HttpConnector
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 
-class MangaNeloScrapper(val httpConnector: HttpConnector<Document>) : MangaSourceOperation {
+class MangaNeloScrapper(val httpConnector: HttpConnector<Document>) : MangaSource {
 
     private val baseUrl = "https://manganelo.com"
 
@@ -52,11 +52,12 @@ class MangaNeloScrapper(val httpConnector: HttpConnector<Document>) : MangaSourc
         val docs = httpConnector.obtainDocument("$baseUrl/manga/$mangaId")
         return docs.getElementsByClass("row-content-chapter").first()
                 ?.getElementsByTag("a")
-                ?.map(::extractChapterInfo) ?: listOf()
+                ?.map { extractChapterInfo(it, mangaId) } ?: listOf()
     }
 
     override fun extractImagesUrl(mangaChapter: MangaChapter): List<String> {
-        val docs: Document = httpConnector.obtainDocument(mangaChapter.url)
+        val docs: Document = httpConnector
+                .obtainDocument("$baseUrl/chapter/${mangaChapter.mangaId}/chapter_${mangaChapter.number}")
 
         val images: List<String> = docs.getElementsByClass("container-chapter-reader")
                 .first()
@@ -83,12 +84,12 @@ class MangaNeloScrapper(val httpConnector: HttpConnector<Document>) : MangaSourc
         return MangaInfo(id = elementId, name = elementTitle, imageUrl = elementImg, mangaUrl = elementUrl)
     }
 
-    private fun extractChapterInfo(it: Element?): MangaChapter {
+    private fun extractChapterInfo(it: Element?, id: String): MangaChapter {
         val link = it?.attr("href") ?: ""
         val title = it?.attr("title") ?: ""
         val chapterNumber = link.split("_").last()
 
-        return MangaChapter(number = chapterNumber, name = title, url = link)
+        return MangaChapter(number = chapterNumber, name = title, mangaId = id)
     }
 
 }

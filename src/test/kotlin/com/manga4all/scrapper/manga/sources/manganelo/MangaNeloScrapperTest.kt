@@ -122,57 +122,58 @@ internal class MangaNeloScrapperTest {
                 MangaChapter(
                         number = "10",
                         name = "Kimetsu no Yaiba Chapter 10 : Swamp Of Abduction",
-                        url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_10"
+                        mangaId = "kimetsu_no_yaiba"
                 ),
                 MangaChapter(
                         number = "9",
                         name = "Kimetsu no Yaiba Chapter 9 : Welcome Home",
-                        url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_9"
+                        mangaId = "kimetsu_no_yaiba"
                 ),
                 MangaChapter(
                         number = "8",
                         name = "Kimetsu no Yaiba Chapter 8 : Big Brother",
-                        url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_8"
+                        mangaId = "kimetsu_no_yaiba"
                 ),
                 MangaChapter(
                         number = "7.5",
                         name = "Kimetsu no Yaiba Chapter 7.5 : Omake",
-                        url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_7.5"
+                        mangaId = "kimetsu_no_yaiba"
                 ),
                 MangaChapter(
                         number = "7",
                         name = "Kimetsu no Yaiba Chapter 7 : Spirits Of The Dead",
-                        url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_7"
+                        mangaId = "kimetsu_no_yaiba"
                 ),
                 MangaChapter(
                         number = "6",
                         name = "Kimetsu no Yaiba Chapter 6 : Pile O' Hands",
-                        url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_6"
+                        mangaId = "kimetsu_no_yaiba"
                 ),
                 MangaChapter(
                         number = "5",
                         name = "Kimetsu no Yaiba Chapter 5 : Tanjirou Diary - Part Two",
-                        url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_5"
+                        mangaId = "kimetsu_no_yaiba"
                 ),
                 MangaChapter(
                         number = "4",
                         name = "Kimetsu no Yaiba Chapter 4 : Tanjirou Diary - Part One",
-                        url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_4"
+                        mangaId = "kimetsu_no_yaiba"
+
                 ),
                 MangaChapter(
                         number = "3",
                         name = "Kimetsu no Yaiba Chapter 3 : I Will Return Before Dawn",
-                        url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_3"
+                        mangaId = "kimetsu_no_yaiba"
                 ),
                 MangaChapter(
                         number = "2",
                         name = "Kimetsu no Yaiba Chapter 2 : A Person Unknown",
-                        url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_2"
+                        mangaId = "kimetsu_no_yaiba"
                 ),
                 MangaChapter(
                         number = "1",
                         name = "Kimetsu no Yaiba Chapter 1 : Cruelty",
-                        url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_1"
+                        mangaId = "kimetsu_no_yaiba"
                 )
         )
 
@@ -188,7 +189,7 @@ internal class MangaNeloScrapperTest {
                         MangaChapter(
                                 name = "kimetsu_no_yaiba",
                                 number = "1",
-                                url = "https://manganelo.com/chapter/kimetsu_no_yaiba/chapter_1"
+                                mangaId = "kimetsu_no_yaiba"
                         )
                 )
 

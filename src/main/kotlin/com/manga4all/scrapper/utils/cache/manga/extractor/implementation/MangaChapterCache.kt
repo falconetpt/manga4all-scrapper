@@ -3,17 +3,17 @@ package com.manga4all.scrapper.utils.cache.manga.extractor.implementation
 import com.google.common.cache.CacheLoader
 import com.manga4all.scrapper.manga.MangaChapter
 import com.manga4all.scrapper.manga.MangaInfo
-import com.manga4all.scrapper.manga.sources.MangaSourceOperation
+import com.manga4all.scrapper.manga.sources.MangaSource
 import com.manga4all.scrapper.utils.cache.Cache
 import com.manga4all.scrapper.utils.cache.manga.extractor.GuavaBaseCache
 
 class MangaChapterCache(val maxSize: Long,
-                        val mangaSourceOperation: MangaSourceOperation,
+                        val mangaSource: MangaSource,
                         val expirationTimeAfterAccessSeconds: Long) : Cache<MangaInfo, List<MangaChapter>> {
 
     private val cacheLoader = object : CacheLoader<MangaInfo, List<MangaChapter>>() {
         override fun load(id: MangaInfo): List<MangaChapter> {
-            return mangaSourceOperation.extractChapterList(id)
+            return mangaSource.extractChapterList(id)
         }
     }
 
